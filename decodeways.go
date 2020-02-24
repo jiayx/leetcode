@@ -1,19 +1,21 @@
 package main
 
 import (
+	"fmt"
 	"strconv"
 	"strings"
 )
 
 func main() {
-	s := "226"
-	decode(s)
+	s := "12343520342344553"
+	i := decode(s)
+	fmt.Println(i)
 }
 
 func decode(s string) int {
 	length := len(s)
 	arr := make([]int, length+1)
-	arr[0] = 0
+	arr[0] = 1
 	if s[0] == '0' {
 		arr[1] = 0
 	} else {
@@ -22,13 +24,7 @@ func decode(s string) int {
 
 	i := 2
 	for i <= length {
-		var fix int
-		if i == 2 {
-			fix = 1
-		} else {
-			fix = arr[i-2]
-		}
-		arr[i] = arr[i-1]*between(s[i-1:i]) + fix*between(s[i-2:i])
+		arr[i] = arr[i-1]*between(s[i-1:i]) + arr[i-2]*between(s[i-2:i])
 		i = i + 1
 	}
 	return arr[length]
