@@ -1,19 +1,15 @@
-package main
+package leetcode
 
 import (
-	"fmt"
 	"strconv"
 	"strings"
 )
 
-func main() {
-	s := "12343520342344553"
-	// i := decode(s)
-	i := decode1(s)
-	fmt.Println(i)
-}
+// 题目：https://leetcode-cn.com/problems/decode-ways
+// 难度：中等
 
-func decode(s string) int {
+// Decode 动态规划
+func Decode(s string) int {
 	length := len(s)
 	arr := make([]int, length+1)
 	arr[0] = 1
@@ -27,8 +23,8 @@ func decode(s string) int {
 	return arr[length]
 }
 
-// 简化为用两个变量存值
-func decode1(s string) int {
+// Decode1 简化为用两个变量存值
+func Decode1(s string) int {
 	length := len(s)
 
 	prev := 1
